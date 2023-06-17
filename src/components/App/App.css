@@ -1,0 +1,19 @@
+.App {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.wrapper {
+  max-width: 1000px;
+  width: 100%;
+  background-color: #8183853d
+}
+
+video {
+  height: auto;
+  width: 100%;
+}
+
+
