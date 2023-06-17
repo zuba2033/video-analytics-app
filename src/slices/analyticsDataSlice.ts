@@ -1,5 +1,6 @@
-import { createSlice, createAction, PayloadAction } from '@reduxjs/toolkit';
+import { createSlice, createAction, PayloadAction, createSelector } from '@reduxjs/toolkit';
 import { iAnalyticsData } from '../types';
+import { RootState } from '../store/store';
 
 type LoadingStatus = 'idle' | 'loading' | 'error';
 
@@ -31,6 +32,16 @@ const analyticsDataSlice = createSlice({
         }
   },
 });
+
+export const sortedDataSelector = createSelector<iAnalyticsData[]>(
+    (state : RootState) => state.analyticsData, 
+    (analyticsData) => {
+        const sortedData = analyticsData.sort((a, b) => {
+            return a.timestamp > b.timestamp;
+        })
+        return sortedData;
+    }
+)
 
 export const loadAnalyticsData = createAction('analytics/loadAnalyticsData');
 
