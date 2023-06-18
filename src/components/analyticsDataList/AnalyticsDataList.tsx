@@ -1,9 +1,9 @@
 import { MouseEvent, useEffect } from 'react';
-import { loadAnalyticsData, sortedDataSelector } from '../../slices/analyticsDataSlice';
-import { setStartTime } from '../../slices/videoPlayerSlice';
+import { loadAnalyticsData, sortedDataSelector } from '../../slices/slice';
+import { setStartTime } from '../../slices/slice';
 import { AppDispatch } from '../../store/store';
 import { useDispatch, useSelector } from 'react-redux';
-import { iAnalyticsData } from '../../types';
+import { iAnalyticsData } from '../../slices/slice';
 import { RootState } from '../../store/store';
 import Spinner from '../Spinner/Spinner';
 

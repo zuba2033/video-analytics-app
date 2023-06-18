@@ -1,6 +1,5 @@
 import { takeLatest, call, put } from "redux-saga/effects";
-import { setAnalyticsDataRecieved, setAnalyticsDataLoading, setAnalyticsDataError } from "../slices/analyticsDataSlice";
-import { iAnalyticsData } from "../types";
+import { iAnalyticsData, setAnalyticsDataRecieved, setAnalyticsDataLoading, setAnalyticsDataError } from "../slices/slice";
 
 function* fetchAnalyticsData(): Generator<any, void, iAnalyticsData[]> {
     try {

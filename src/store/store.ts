@@ -1,17 +1,16 @@
 import { configureStore } from "@reduxjs/toolkit";
-import analyticsData from "../slices/analyticsDataSlice";
-import videoPlayer from "../slices/videoPlayerSlice";
+import analyticsData from "../slices/slice";
 import createSagaMiddleware from "redux-saga";
-import analyticsDataSaga from "../sagas/analyticsDataSaga";
+import saga from "../sagas/saga";
 
 const sagaMiddleware = createSagaMiddleware();
 
 const store = configureStore({
-  reducer: {analyticsData, videoPlayer},
+  reducer: {analyticsData},
   middleware: [sagaMiddleware],
 });
 
-sagaMiddleware.run(analyticsDataSaga);
+sagaMiddleware.run(saga);
 
 export default store;
 

@@ -1,17 +1,30 @@
 import { createSlice, createAction, PayloadAction, createSelector } from '@reduxjs/toolkit';
-import { iAnalyticsData } from '../types';
 import { RootState } from '../store/store';
 
 type LoadingStatus = 'idle' | 'loading' | 'error';
 
+export interface iAnalyticsData {
+    id: number,
+    timestamp: number,
+    duration: number,
+    zone: {
+        left: number,
+        top: number,
+        width: number,
+        height: number
+    }
+}
+
 interface iAnalyticsDataState {
     analyticsData: iAnalyticsData[],
     loadingStatus: LoadingStatus,
+    startTime: number
 }
 
 const initialState : iAnalyticsDataState = {
     analyticsData: [],
     loadingStatus: 'idle',
+    startTime: 0
 };
 
 const analyticsDataSlice = createSlice({
@@ -27,6 +40,9 @@ const analyticsDataSlice = createSlice({
         },
         setAnalyticsDataError(state) {
             state.loadingStatus = 'error'
+        },
+        setStartTime(state, action: PayloadAction<number>) {
+            state.startTime = action.payload
         }
   },
 });
@@ -43,7 +59,12 @@ export const sortedDataSelector = createSelector(
 
 export const loadAnalyticsData = createAction('analytics/loadAnalyticsData');
 
-export const { setAnalyticsDataRecieved, setAnalyticsDataLoading, setAnalyticsDataError } = analyticsDataSlice.actions;
+export const { 
+    setAnalyticsDataRecieved, 
+    setAnalyticsDataLoading, 
+    setAnalyticsDataError, 
+    setStartTime 
+} = analyticsDataSlice.actions;
 
 const { reducer } = analyticsDataSlice;
 

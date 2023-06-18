@@ -1,5 +1,7 @@
 * {
   box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
 
 .App {
@@ -10,7 +12,7 @@
 }
 
 .wrapper {
-  max-width: 1200px;
+  max-width: 1300px;
   flex: 1;
   height: 100%;
   width: 100%;
@@ -18,9 +20,22 @@
   padding: 10px;
 }
 
+.video-wrap {
+  width: 100%;
+}
+
 video {
   object-fit: cover;
   width: 100%;
+  position: relative;
+}
+
+canvas {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 99;
+  pointer-events: none;
 }
 
 ul {
