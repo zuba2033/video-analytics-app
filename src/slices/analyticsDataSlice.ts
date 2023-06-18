@@ -7,13 +7,11 @@ type LoadingStatus = 'idle' | 'loading' | 'error';
 interface iAnalyticsDataState {
     analyticsData: iAnalyticsData[],
     loadingStatus: LoadingStatus,
-    error: boolean
 }
 
 const initialState : iAnalyticsDataState = {
     analyticsData: [],
     loadingStatus: 'idle',
-    error: false
 };
 
 const analyticsDataSlice = createSlice({
@@ -33,11 +31,11 @@ const analyticsDataSlice = createSlice({
   },
 });
 
-export const sortedDataSelector = createSelector<iAnalyticsData[]>(
+export const sortedDataSelector = createSelector(
     (state : RootState) => state.analyticsData, 
-    (analyticsData) => {
-        const sortedData = analyticsData.sort((a, b) => {
-            return a.timestamp > b.timestamp;
+    (analyticsData: iAnalyticsDataState)  => {
+        const sortedData = [...analyticsData.analyticsData].sort((a, b) => {
+            return a.timestamp > b.timestamp? 1 : -1;
         })
         return sortedData;
     }
