@@ -22,6 +22,7 @@
 
 .video-wrap {
   width: 100%;
+  position: relative;
 }
 
 video {
